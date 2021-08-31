@@ -19,11 +19,11 @@ npm init -y && npm install -y postcss postcss-cli autoprefixer
 
 echo '🤵 Install Hugo'
 # HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
-# mkdir tmp/ && cd tmp/
-# curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION: -6}_Linux-64bit.tar.gz | tar -xvzf-
-# mv hugo /usr/local/bin/
-# cd .. && rm -rf tmp/
-apt-get install hugo
+HUGO_VERSION = 0.80.0
+mkdir tmp/ && cd tmp/
+curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION: -6}_Linux-64bit.tar.gz | tar -xvzf-
+mv hugo /usr/local/bin/
+cd .. && rm -rf tmp/
 cd ${GITHUB_WORKSPACE}
 hugo version || exit 1
 
@@ -36,7 +36,7 @@ if [ -d "${DEST}" ]; then
 fi
 
 echo '🍳 Build site'
-hugo ${HUGO_ARGS:-""} -D -v ${DEST}
+hugo ${HUGO_ARGS:-""} -d ${DEST}
 
 echo '🎁 Publish to remote repository'
 COMMIT_MESSAGE=${INPUT_COMMIT_MESSAGE}
