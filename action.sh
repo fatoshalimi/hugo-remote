@@ -40,11 +40,10 @@ COMMIT_MESSAGE=${INPUT_COMMIT_MESSAGE}
 
 cd ${DEST}
 git config user.name "${GITHUB_ACTOR}"
-git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add .
 git commit -am "$COMMIT_MESSAGE"
 
 CONTEXT=${INPUT_BRANCH-master}
 [ -z $CONTEXT ] && CONTEXT='master'
 
-git push -f -q https://${TOKEN}@github.com/${REMOTE} $CONTEXT
+git push -f -q https://${API_TOKEN_GITHUB}@github.com/${REMOTE} $CONTEXT
