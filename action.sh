@@ -36,7 +36,8 @@ if [ -d "${DEST}" ]; then
 fi
 
 echo '🍳 Build site'
-hugo ${HUGO_ARGS:-""} -d ${DEST}
+# hugo ${HUGO_ARGS:-""} -d ${DEST}
+hugo 
 
 echo '🎁 Publish to remote repository'
 COMMIT_MESSAGE=${INPUT_COMMIT_MESSAGE}
