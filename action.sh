@@ -19,7 +19,7 @@ npm init -y && npm install -y postcss postcss-cli autoprefixer
 
 echo '🤵 Install Hugo'
 mkdir tmp/ && cd tmp/
-curl -sSL https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz | sudo tar -xz -C /usr/local
+curl -sSL https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz | tar -xz -C /usr/local
 export PATH=$PATH:/usr/local/go/bin
 
 HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
