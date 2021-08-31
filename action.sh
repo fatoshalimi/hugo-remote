@@ -18,8 +18,11 @@ echo '🔧 Install tools'
 npm init -y && npm install -y postcss postcss-cli autoprefixer
 
 echo '🤵 Install Hugo'
-HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
 mkdir tmp/ && cd tmp/
+wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+export PATH=$PATH:/usr/local/go/bin
+
+HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
 curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION: -6}_Linux-64bit.tar.gz | tar -xvzf-
 mv hugo /usr/local/bin/
 cd .. && rm -rf tmp/
