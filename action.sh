@@ -19,7 +19,7 @@ npm init -y && npm install -y postcss postcss-cli autoprefixer
 
 echo '🤵 Install Hugo'
 HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
-sudo apt-get install hugo
+apt-get install hugo
 hugo version || exit 1
 
 echo '👯 Clone remote repository'
